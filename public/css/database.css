@@ -1,0 +1,28 @@
+.record{
+    margin: 10px 0px;
+    text-align: center;
+    border: solid black 1px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.record p {
+    margin: 5px;
+    word-wrap: break-word;
+}
+
+.record:nth-child(even){
+    background-color: lightgrey;
+}
+
+.record:nth-child(odd){
+    background-color: white;
+}
+
+.img {
+    display: block;
+    width: 70%;
+    margin: auto;
+    padding: 10px 0px;
+}

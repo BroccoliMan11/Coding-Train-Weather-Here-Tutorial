@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <script src = https://cdn.jsdelivr.net/npm/p5@0.9.0/lib/p5.min.js></script>
+    <script src = https://cdn.jsdelivr.net/npm/p5@0.9.0/lib/addons/p5.dom.min.js></script>
+
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data Selfie App</h1>
+
+    <div class="navbar clearfix">
+        <a class="nav" href="index.html">Home</a>
+        <a class="nav" href="all.html">Database</a>
+    </div>
+
+    <p>lattitude: <span id="latitude"></span>&deg;<br/></p>
+    <p>longitude: <span id="longitude"></span>&deg;<br/></p>
+    <p>
+        The weather here is <span id="summary"></span> with a temperature of 
+        <span id="temperature"></span>&deg; C.
+    </p>
+    <p id="aq_report">
+        The concentration of particulate matter (<span id="aq_parameter"></span>)
+        is <span id="aq_value"></span> <span id="aq_units"></span> last read on
+        <span id="aq_date"></span>
+    </p>
+    <div>
+        <label>Enter your favourite food</label></br>
+        <input id="fav-food" type="text">
+        <button id="submit" type="button">Submit</button>
+    </div>
+    <div id="mapid"></div>
+
+    <script src="js/validate.js"></script>
+</body>
+</html>
