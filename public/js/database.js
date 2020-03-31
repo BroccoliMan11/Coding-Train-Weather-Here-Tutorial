@@ -19,6 +19,12 @@ async function getData(){
         const airValue = document.createElement('p');
         const airUnit = document.createElement('p');
         const airDate = document.createElement('p');
+        const deletebtn = document.createElement('p');
+        deletebtn.innerHTML = `
+            <form action="/records/delete/${item._id}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        `;
 
         const image = document.createElement('img');
         image.setAttribute('class', 'img');
@@ -48,7 +54,7 @@ async function getData(){
             airSummary.append(airParam, airValue, airUnit, airDate);
         }
 
-        root.append(food, geo, date, weatherSum, weatherTemp, airSummary, image);
+        root.append(food, geo, date, weatherSum, weatherTemp, airSummary, image, deletebtn);
         
         document.body.append(root);
     }
