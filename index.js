@@ -74,7 +74,10 @@ app.get('/weather/:latlon', async (request, response) => {
     response.json(data);
 });
 
-app.post('/records/delete/:id', async (request, response) => {
+app.post('/records/delete/:id/:imageName', async (request, response) => {
+
+    fs.unlinkSync(`./public/images/${request.params.imageName}`);
+
     dataBase.remove({ _id: request.params.id }, {}, (err, num) => {
         response.json({ err: err, num: num, query: { _id: request.params.id } });
     });

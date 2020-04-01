@@ -21,7 +21,7 @@ async function getData(){
         const airDate = document.createElement('p');
         const deletebtn = document.createElement('p');
         deletebtn.innerHTML = `
-            <form action="/records/delete/${item._id}" method="post">
+            <form action="/records/delete/${item._id}/${item.imageName}" method="post">
                 <button type="submit">Delete</button>
             </form>
         `;
