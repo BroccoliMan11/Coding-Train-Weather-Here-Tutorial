@@ -17,6 +17,32 @@
         <a class="nav clearfix" href="all.html">Database</a>
     </div>
 
-    <script src="js/database.js"></script>
+    <template id='database-template'>
+        {{#each database}}
+        <div class='record'>
+            <p>Food: {{this.favouriteFood}}</p>
+            <p>Lat: {{this.lat}}, Lon: {{this.lon}}</p>
+            <p>Date: {{this.dateString}}</p>
+            <p>Weather Summary: {{this.weather.summary}}</p>
+            <p>Temperature: {{this.weather.temperature}}</p>
+            {{#if this.hasAirQuality}}
+            <p>Air Quality Parameter: {{this.air.parameter}}</p>
+            <p>Air Quality Value: {{this.air.value}}</p>
+            <p>Air Quality Units: {{this.air.unit}}</p>
+            <p>Air Quality Last Updated: {{this.air.lastUpdated}}</p>
+            {{else}}
+            <p>[No Data On Air Quality]</p>
+            {{/if}}
+            <img class='img' src={{this.image64}}>
+            <form action='/records/delete/{{this._id}}/${{this.imageName}}' method='post'>
+                <button type='submit'>Delete</button>
+            </form>
+        </div>
+        {{/each}}
+    </template>
+    <div id='showdatabase'></div>
+
+    <script src="js/handlebars-v4.7.4.js"></script>
+<script src="js/database.js"></script>
 </body>
 </html>

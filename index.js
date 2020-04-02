@@ -6,16 +6,19 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 const fs = require('fs');
-const path = require('path');
 
 app.listen(port, () => console.log(`Starting server at ${port}`));
+
+//USE STATIC FILES
 app.use(express.static('public'));
 
 app.use(express.json({limit: '1mb'}));
 
+//SETUP DATABASE
 const dataBase = new DataStore('database.db');
 dataBase.loadDatabase();
 
+//API ROUTES
 app.post('/api', (request, response) => {
 
     const data = request.body;
@@ -34,6 +37,7 @@ app.post('/api', (request, response) => {
 
 });
 
+//GET DATA FROM DATABASE
 app.get('/api', (request, response) => {
     dataBase.find({}, (err, data) => {
         if (err){
@@ -44,12 +48,14 @@ app.get('/api', (request, response) => {
     })
 });
 
+//GET IMAGE64 FROM IMAGE NAME
 app.get('/img/:name', (request, response) => {
     const imageName = request.params.name;
     const text = fs.readFileSync(`./public/images/${imageName}`, 'utf8');
     response.send(text);
 });
 
+//ACCESS WEATHER AND AIR QUALITY FROM OTHER APIS
 app.get('/weather/:latlon', async (request, response) => {
     const latlon = request.params.latlon.split(','); //get route parameters as string then splits it
     const lat = latlon[0];
@@ -74,6 +80,7 @@ app.get('/weather/:latlon', async (request, response) => {
     response.json(data);
 });
 
+//DELETE IMAGES
 app.post('/records/delete/:id/:imageName', async (request, response) => {
 
     fs.unlinkSync(`./public/images/${request.params.imageName}`);
